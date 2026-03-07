@@ -28,7 +28,7 @@ const VerifyOtp = () => {
 
     try {
       const res = await fetch(
-        "https://griet-hub-backend.onrender.com/api/auth/verify-otp",
+        "https://griethub.onrender.com/api/auth/verify-otp",
         {
           method: "POST",
           headers: {

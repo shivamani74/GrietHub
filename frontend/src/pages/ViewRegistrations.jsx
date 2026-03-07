@@ -18,7 +18,7 @@ const ViewRegistrations = () => {
 
       const token = localStorage.getItem("token");
       const res = await fetch(
-        `http://localhost:5002/api/admin/event/${eventId}/registrations`,
+        `https://griethub.onrender.com/api/admin/event/${eventId}/registrations`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

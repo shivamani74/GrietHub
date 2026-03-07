@@ -10,7 +10,7 @@ const EventStats = () => {
     const fetchStats = async () => {
       try {
         const res = await axios.get(
-          `http:localhost:5002/api/events/stats`
+          `https://griethub.onrender.com/api/events/stats`
         );
         setStats(res.data);
       } catch (err) {

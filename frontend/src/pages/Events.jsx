@@ -12,7 +12,7 @@ const Events = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await fetch("https://griet-hub-backend.onrender.com/api/events");
+        const res = await fetch("https://griethub.onrender.com/api/events");
         const data = await res.json();
         setEvents(data);
       } catch (err) {

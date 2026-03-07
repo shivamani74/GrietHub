@@ -37,7 +37,7 @@ const paymentSchema = new mongoose.Schema(
 
     status: {
       type: String,
-      enum: ["created", "paid", "failed"], // 🔴 'paid' MUST BE HERE
+      enum: ["created", "paid", "failed"], 
       default: "created",
     },
   },

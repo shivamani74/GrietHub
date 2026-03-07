@@ -20,7 +20,7 @@ const MyRegistrations = () => {
     const fetchMyRegistrations = async () => {
       try {
         const res = await fetch(
-          "http://localhost:5002/api/registrations/my",
+          "https://griet-hub-backend.onrender.com/api/registrations/my",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -75,7 +75,6 @@ const MyRegistrations = () => {
                   boxShadow: "0 0 30px rgba(122,28,172,0.25)",
                 }}
               >
-                {/* IMAGE */}
                 <div className="h-[200px] mb-4 overflow-hidden rounded-xl bg-black">
                   <img
                     src={reg.event?.images?.[0] || fallbackImg}
@@ -84,7 +83,6 @@ const MyRegistrations = () => {
                   />
                 </div>
 
-                {/* INFO */}
                 <h2 className="text-xl font-bold text-zinc-100 mb-2">
                   {reg.event?.title}
                 </h2>
@@ -97,7 +95,6 @@ const MyRegistrations = () => {
                   🕒 {new Date(reg.event?.date).toLocaleString()}
                 </p>
 
-                {/* STATUS BADGE */}
                 <span
                   className={`inline-block mb-3 px-3 py-1 text-xs font-semibold rounded-full
                     ${
@@ -111,7 +108,6 @@ const MyRegistrations = () => {
                     : "Paid – QR Sent to Email"}
                 </span>
 
-                {/* INFO TEXT */}
                 <p className="text-zinc-500 text-xs leading-relaxed">
                   {reg.status === "checked_in"
                     ? "You have successfully attended this event."

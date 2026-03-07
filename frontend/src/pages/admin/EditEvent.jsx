@@ -92,7 +92,6 @@ const EditEvent = () => {
   return (
     <div className="min-h-screen bg-black px-6 py-10 relative">
 
-      {/* 🔥 FIXED BACK BUTTON — IMPOSSIBLE TO HIDE */}
       <button
         onClick={() => navigate("/admin/manage-events")}
         className="fixed top-6 left-6 z-[9999]

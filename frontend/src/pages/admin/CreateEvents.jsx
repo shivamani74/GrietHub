@@ -43,7 +43,7 @@ const CreateEvents = () => {
       );
       images.forEach((img) => formData.append("images", img));
 
-      const res = await fetch("http://localhost:5002/api/events", {
+      const res = await fetch("https://griet-hub-backend.onrender.com/api/events", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

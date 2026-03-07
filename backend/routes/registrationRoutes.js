@@ -2,7 +2,7 @@ import express from "express";
 import protect from "../middleware/authMiddleware.js";
 import {
   getMyRegistrations,
-  getRegistrationStatus, // ✅ THIS WAS MISSING
+  getRegistrationStatus, 
 } from "../controllers/registrationController.js";
 
 const router = express.Router();

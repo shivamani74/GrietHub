@@ -93,7 +93,7 @@ const ViewRegistrations = () => {
     <div className="p-6 text-gray-200">
       <h2 className="text-2xl font-bold mb-6">📋 Event Registrations</h2>
 
-      {/* COUNTS */}
+      
       <div className="grid grid-cols-3 gap-4 mb-6">
         <div className="bg-gray-800 p-4 rounded-xl text-center">
           <p className="text-sm text-gray-400">Total</p>
@@ -109,7 +109,6 @@ const ViewRegistrations = () => {
         </div>
       </div>
 
-      {/* FILTERS */}
       <div className="flex flex-wrap gap-4 mb-6 items-center">
         <input
           type="text"
@@ -137,7 +136,6 @@ const ViewRegistrations = () => {
         </button>
       </div>
 
-      {/* TABLE */}
       <div className="overflow-x-auto rounded-xl border border-gray-700">
         <table className="w-full text-sm">
           <thead className="bg-gray-800 text-gray-300">

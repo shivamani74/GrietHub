@@ -1,8 +1,6 @@
 import Event from "../models/Event.js";
 
-/* ===============================
-   GET EVENTS CREATED BY ADMIN
-================================ */
+
 export const getMyEvents = async (req, res) => {
   try {
     if (!req.user || req.user.role !== "admin") {
@@ -20,9 +18,7 @@ export const getMyEvents = async (req, res) => {
   }
 };
 
-/* ===============================
-   GET SINGLE EVENT (PUBLIC)
-================================ */
+
 export const getEventById = async (req, res) => {
   try {
     const event = await Event.findById(req.params.id).populate(
@@ -40,9 +36,7 @@ export const getEventById = async (req, res) => {
   }
 };
 
-/* ===============================
-   UPDATE EVENT (ADMIN + OWNER)
-================================ */
+
 export const updateEvent = async (req, res) => {
   try {
     if (!req.user || req.user.role !== "admin") {
@@ -54,7 +48,6 @@ export const updateEvent = async (req, res) => {
       return res.status(404).json({ message: "Event not found" });
     }
 
-    // Optional: ensure admin owns the event
     if (event.createdBy.toString() !== req.user._id.toString()) {
       return res.status(403).json({ message: "Not your event" });
     }

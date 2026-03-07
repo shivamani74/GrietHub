@@ -5,7 +5,7 @@ const AdminDashboard = () => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    fetch("http://localhost:5002/api/admin/dashboard", {
+    fetch("https://griet-hub-backend.onrender.com/api/admin/dashboard", {
       headers: {
         Authorization: `Bearer ${token}`,
       },

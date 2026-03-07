@@ -5,7 +5,6 @@ const VerifyOtp = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // These come from signup page via navigate state
   const {
     name,
     email,
@@ -29,7 +28,7 @@ const VerifyOtp = () => {
 
     try {
       const res = await fetch(
-        "http://localhost:5002/api/auth/verify-otp",
+        "https://griet-hub-backend.onrender.com/api/auth/verify-otp",
         {
           method: "POST",
           headers: {

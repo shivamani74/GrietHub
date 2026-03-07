@@ -54,7 +54,7 @@ const AdminSignup = () => {
     setLoading(true);
     try {
       const res = await fetch(
-        "http://localhost:5002/api/auth/admin/signup",
+        "https://griet-hub-backend.onrender.com/api/auth/admin/signup",
         {
           method: "POST",
           body: formData,
@@ -83,8 +83,7 @@ const AdminSignup = () => {
     <div className="min-h-screen bg-black flex items-center justify-center px-6">
       <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
 
-        {/* LEFT */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left px-4 animate-left">
+]          <div className="flex flex-col items-center lg:items-start text-center lg:text-left px-4 animate-left">
           <img src={grietLogo} alt="GRIEThub" className="w-24 mb-4" />
           <h1 className="text-2xl font-extrabold mb-3 text-[#7A1CAC]">
             GRIEThub – Admin
@@ -99,7 +98,6 @@ const AdminSignup = () => {
           </p>
         </div>
 
-        {/* RIGHT */}
         <div className="flex justify-center animate-right">
           <div
             className="w-full max-w-md rounded-2xl p-8 bg-zinc-950 border border-zinc-800"
@@ -111,7 +109,6 @@ const AdminSignup = () => {
             <h2 className="text-3xl font-extrabold text-center text-[#7A1CAC] mb-6">
               Admin Registration
             </h2>
-               {/* WARNING */}
             <div className="mb-6 rounded-lg border border-yellow-500/30 bg-yellow-500/10 px-4 py-3">
               <p className="text-yellow-400 text-xs leading-relaxed text-center">
                 Admin accounts require manual approval.

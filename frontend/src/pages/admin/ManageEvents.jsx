@@ -52,9 +52,7 @@ const ManageEvents = () => {
     <div className="min-h-screen bg-black px-6 py-10">
       <div className="max-w-6xl mx-auto">
 
-        {/* HEADER */}
         <div className="flex flex-wrap items-center justify-between gap-4 mb-10">
-          {/* BACK */}
           <button
             onClick={() => navigate("/events")}
             className="px-4 py-2 rounded-lg text-sm
@@ -64,14 +62,11 @@ const ManageEvents = () => {
             ← Back
           </button>
 
-          {/* TITLE */}
           <h1 className="text-3xl font-extrabold text-[#7A1CAC]">
             📊 Manage Events
           </h1>
 
-          {/* ACTIONS */}
           <div className="flex gap-3">
-            {/* ✅ GLOBAL QR SCAN */}
             <button
               onClick={() => navigate("/admin/scan")}
               className="px-5 py-2 rounded-lg font-semibold text-black
@@ -83,7 +78,6 @@ const ManageEvents = () => {
               📷 Scan QR Tickets
             </button>
 
-            {/* CREATE EVENT */}
             <button
               onClick={() => navigate("/admin/manage-events/create")}
               className="px-6 py-2 rounded-lg font-bold text-black
@@ -98,7 +92,6 @@ const ManageEvents = () => {
           </div>
         </div>
 
-        {/* EVENTS LIST */}
         {events.length === 0 ? (
           <p className="text-zinc-400">
             You haven’t created any events yet.

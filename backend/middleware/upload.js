@@ -4,7 +4,6 @@ import fs from "fs";
 
 const uploadDir = "uploads/events";
 
-// create folder if not exists
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true });
 }

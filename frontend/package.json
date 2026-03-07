@@ -2,8 +2,8 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-
-  "proxy": "http://localhost:5002",
+  
+  "proxy": "https://griet-hub-backend.onrender.com",
 
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
@@ -24,7 +24,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev":"vite"
   },
 
   "eslintConfig": {

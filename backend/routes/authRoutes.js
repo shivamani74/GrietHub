@@ -9,9 +9,7 @@ import upload from "../middleware/upload.js";
 
 const router = express.Router();
 
-/* =====================================================
-   STUDENT REGISTER → SEND OTP
-===================================================== */
+
 router.post("/register", async (req, res) => {
   try {
     let { name, email, rollNo, phone, password } = req.body;
@@ -41,15 +39,55 @@ router.post("/register", async (req, res) => {
 
     await Otp.create({ email, otp, expiresAt });
 
-    await sendEmail({
-      to: email,
-      subject: "Your OTP for Registration",
-      html: `
-        <h2>OTP Verification</h2>
-        <h1>${otp}</h1>
-        <p>Valid for 5 minutes</p>
-      `,
-    });
+await sendEmail({
+  to: email,
+  subject: "Your OTP for Registration",
+  html: `
+  <div style="font-family: Arial, sans-serif; background:#f4f6fb; padding:30px;">
+    
+    <div style="max-width:500px; margin:auto; background:white; border-radius:10px; 
+    overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+
+      <div style="background:#2563eb; color:white; padding:20px; text-align:center;">
+        <h2 style="margin:0;">🔐 OTP Verification</h2>
+      </div>
+
+      <div style="padding:25px; text-align:center;">
+        <p style="font-size:15px;">
+          Use the following One-Time Password to complete your registration:
+        </p>
+
+        <div style="font-size:36px; font-weight:bold; letter-spacing:6px; 
+        background:#f1f5f9; padding:15px; border-radius:8px; margin:20px 0; color:#111;">
+          ${otp}
+        </div>
+
+        <p style="font-size:14px; color:#555;">
+          This OTP is valid for <b>5 minutes</b>.
+        </p>
+
+        <div style="background:#fff3cd; border-left:5px solid #f59e0b; 
+        padding:12px; margin-top:20px; border-radius:6px; text-align:left;">
+          <p style="margin:0; font-size:13px;">
+            ⚠ Do not share this OTP with anyone. Our team will never ask for your OTP.
+          </p>
+        </div>
+
+        <p style="margin-top:25px; font-size:14px;">
+          If you didn’t request this OTP, please ignore this email.
+        </p>
+      </div>
+
+      <div style="background:#f1f5f9; text-align:center; padding:10px; 
+      font-size:12px; color:#555;">
+        This is an automated email. Please do not reply.
+      </div>
+
+    </div>
+
+  </div>
+  `,
+});
 
     res.json({ success: true, message: "OTP sent to email" });
   } catch (err) {
@@ -58,9 +96,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
-/* =====================================================
-   VERIFY OTP → CREATE STUDENT
-===================================================== */
+
 router.post("/verify-otp", async (req, res) => {
   try {
     let { name, email, rollNo, phone, password, otp } = req.body;
@@ -83,7 +119,7 @@ router.post("/verify-otp", async (req, res) => {
       rollNo,
       phone,
       password,
-      role: "student",       // ✅ IMPORTANT
+      role: "student",      
       isVerified: true,
     });
 
@@ -99,9 +135,7 @@ router.post("/verify-otp", async (req, res) => {
   }
 });
 
-/* =====================================================
-   LOGIN (STUDENT + ADMIN)
-===================================================== */
+
 router.post("/login", async (req, res) => {
   try {
     const { rollNo, password } = req.body;
@@ -136,13 +170,13 @@ router.post("/login", async (req, res) => {
     const token = jwt.sign(
       {
         id: user._id,
-        role: user.role,     // ✅ embedded in JWT
+        role: user.role,    
       },
       process.env.JWT_SECRET,
       { expiresIn: "7d" }
     );
 
-    // 🔥 THIS IS WHAT YOUR FRONTEND NEEDS
+  
     res.json({
       success: true,
       token,
@@ -151,7 +185,7 @@ router.post("/login", async (req, res) => {
         name: user.name,
         email: user.email,
         rollNo: user.rollNo,
-        role: user.role,      // ✅ THIS WAS MISSING BEFORE
+        role: user.role,    
         isVerified: user.isVerified,
       },
     });
@@ -161,9 +195,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-/* =====================================================
-   ADMIN SIGNUP (DOCUMENT VERIFICATION)
-===================================================== */
+
 router.post(
   "/admin/signup",
   upload.single("proofDocument"),
@@ -201,8 +233,8 @@ router.post(
         rollNo,
         phone,
         password,
-        role: "admin",            // ✅ ADMIN
-        isVerified: false,        // ❌ pending approval
+        role: "admin",           
+        isVerified: false,       
         adminVerification: {
           proofDocument: req.file.path,
           clubName,

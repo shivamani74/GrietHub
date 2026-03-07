@@ -6,9 +6,7 @@ import Payment from "../models/Payment.js";
 
 const router = express.Router();
 
-/* =====================================================
-   ADMIN DASHBOARD SUMMARY
-===================================================== */
+
 router.get("/dashboard", protect, async (req, res) => {
   try {
     if (req.user.role !== "admin") {
@@ -60,9 +58,7 @@ router.get("/dashboard", protect, async (req, res) => {
   }
 });
 
-/* =====================================================
-   EVENT REGISTRATIONS (ADMIN VIEW)
-===================================================== */
+
 router.get("/event/:eventId/registrations", protect, async (req, res) => {
   try {
     if (req.user.role !== "admin") {

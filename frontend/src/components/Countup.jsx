@@ -14,7 +14,7 @@ const CountUp = ({ end, duration = 2000, suffix = "" }) => {
           observer.disconnect();
         }
       },
-      { threshold: 0.4 } // 40% visible
+      { threshold: 0.4 } 
     );
 
     if (ref.current) observer.observe(ref.current);

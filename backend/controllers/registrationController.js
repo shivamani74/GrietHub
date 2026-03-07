@@ -31,7 +31,7 @@ export const getRegistrationStatus = async (req, res) => {
 
     res.status(200).json({
       registered: true,
-      status: registration.status, // paid | checked_in
+      status: registration.status, 
     });
   } catch (error) {
     console.error("Registration status error:", error);

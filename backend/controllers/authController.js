@@ -12,22 +12,18 @@ export const loginUser = async (req, res) => {
   try {
     const { rollNo, password } = req.body;
 
-    // 🔍 Find user
     const user = await User.findOne({ rollNo });
     if (!user) {
       return res.status(400).json({ message: "Invalid roll number or password" });
     }
 
-    // 🔐 Compare password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({ message: "Invalid roll number or password" });
     }
 
-    // 🎫 Generate token
     const token = generateToken(user._id);
 
-    // ✅ SEND USER OBJECT (IMPORTANT)
     res.status(200).json({
       token,
       user: {

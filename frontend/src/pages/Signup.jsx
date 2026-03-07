@@ -16,16 +16,12 @@ const Signup = () => {
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
 
-  /* ---------------------------
-     HANDLE INPUT CHANGE
-  --------------------------- */
+  
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  /* ---------------------------
-     SEND OTP
-  --------------------------- */
+
   const sendOtp = async () => {
     const { name, email, rollNo, phone, password, confirmPassword } = form;
 
@@ -63,9 +59,7 @@ const Signup = () => {
     }
   };
 
-  /* ---------------------------
-     VERIFY OTP
-  --------------------------- */
+ 
   const verifyOtp = async () => {
     if (!otp) {
       toast.error("Please enter OTP");
@@ -102,9 +96,7 @@ const Signup = () => {
     <div className="min-h-screen bg-black flex items-center justify-center px-6">
       <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
 
-        {/* =========================
-            LEFT: LOGO + DESCRIPTION
-        ========================= */}
+        
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left px-4 animate-left">
           <img
             src={require("../assets/griet-glow.png")}
@@ -123,9 +115,7 @@ const Signup = () => {
           </p>
         </div>
 
-        {/* =========================
-            RIGHT: SIGNUP CARD
-        ========================= */}
+        
         <div className="flex justify-center animate-right">
           <div
             className="w-full max-w-md rounded-2xl p-8 bg-zinc-950 border border-zinc-800"
@@ -147,11 +137,11 @@ const Signup = () => {
                 : "Enter the OTP sent to your email"}
             </p>
 
-            {/* ⚠️ COLLEGE EMAIL WARNING */}
+            
             {step === 1 && (
               <div className="mb-6 rounded-lg border border-yellow-500/30 bg-yellow-500/10 px-4 py-3">
                 <p className="text-yellow-400 text-xs leading-relaxed text-center">
-                  ⚠️ Please use your{" "}
+                  ⚠️ Please use your{"kjbhb "}
                   <span className="font-semibold">
                     official college email ID
                   </span>{" "}
@@ -165,9 +155,7 @@ const Signup = () => {
               </div>
             )}
 
-            {/* =========================
-                STEP 1: SIGNUP FORM
-            ========================= */}
+            
             {step === 1 && (
               <div className="space-y-4">
                 {[
@@ -222,7 +210,7 @@ const Signup = () => {
                   {loading ? "Sending OTP..." : "Send OTP"}
                 </button>
 
-                {/* ✅ ADMIN SIGNUP LINK (ADDED FEATURE) */}
+               
                 <div className="pt-4 text-center">
                   <p className="text-sm text-zinc-400">
                     Are you an admin?{" "}
@@ -237,9 +225,7 @@ const Signup = () => {
               </div>
             )}
 
-            {/* =========================
-                STEP 2: OTP VERIFY
-            ========================= */}
+            
             {step === 2 && (
               <div className="space-y-4">
                 <input

@@ -11,9 +11,7 @@ const ViewEventStats = () => {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
 
-  /* ===============================
-     FETCH REGISTRATIONS
-  ================================ */
+  
   const fetchRegistrations = async () => {
     try {
       const { data } = await axios.get(
@@ -31,9 +29,7 @@ const ViewEventStats = () => {
     fetchRegistrations();
   }, [eventId]);
 
-  /* ===============================
-     SEARCH FILTER
-  ================================ */
+  
   const filteredRegistrations = useMemo(() => {
     if (!search) return registrations;
 
@@ -47,9 +43,7 @@ const ViewEventStats = () => {
     );
   }, [search, registrations]);
 
-  /* ===============================
-     🔥 SUMMARY STATS
-  ================================ */
+  
   const stats = useMemo(() => {
     let totalRevenue = 0;
     let checkedIn = 0;
@@ -77,9 +71,7 @@ const ViewEventStats = () => {
     };
   }, [registrations]);
 
-  /* ===============================
-     DOWNLOAD CSV
-  ================================ */
+  
   const downloadCSV = () => {
     if (filteredRegistrations.length === 0) {
       toast.info("No data to download");
@@ -125,7 +117,6 @@ const ViewEventStats = () => {
     <div className="min-h-screen bg-black px-6 py-10">
       <div className="max-w-7xl mx-auto">
 
-        {/* HEADER */}
         <div className="flex items-center justify-between mb-6">
           <button
             onClick={() => navigate(-1)}
@@ -141,7 +132,6 @@ const ViewEventStats = () => {
           </h1>
         </div>
 
-        {/* 🔥 SUMMARY CARDS */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
           <StatCard title="Total Registrations" value={stats.totalRegistrations} />
           <StatCard title="Checked-in" value={stats.checkedIn} color="green" />
@@ -150,7 +140,7 @@ const ViewEventStats = () => {
           <StatCard title="Total Revenue" value={`₹${stats.totalRevenue}`} color="green" />
         </div>
 
-        {/* ACTION BAR */}
+        
         <div className="flex flex-wrap gap-4 mb-6 items-center">
           <input
             type="text"
@@ -170,7 +160,7 @@ const ViewEventStats = () => {
           </button>
         </div>
 
-        {/* TABLE */}
+       
         {filteredRegistrations.length === 0 ? (
           <p className="text-zinc-400">No registrations found.</p>
         ) : (
@@ -217,9 +207,6 @@ const ViewEventStats = () => {
   );
 };
 
-/* ===============================
-   SMALL STAT CARD COMPONENT
-=============================== */
 const StatCard = ({ title, value, color = "zinc" }) => {
   const colors = {
     green: "text-green-400",

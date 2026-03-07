@@ -24,16 +24,14 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function App() {
-  // ✅ DEFINE USER (FIXES ESLINT ERROR)
   const user = JSON.parse(localStorage.getItem("user"));
 
   return (
     <BrowserRouter>
       <>
-        {/* TOASTS */}
         <ToastContainer
           position="top-right"
-          autoClose={3000}
+          autoClose={2000}
           hideProgressBar={false}
           newestOnTop
           closeOnClick
@@ -42,10 +40,8 @@ export default function App() {
         />
 
         <Routes>
-          {/* ================= PUBLIC ================= */}
           <Route path="/" element={<Home />} />
 
-          {/* ================= AUTH ================= */}
           <Route
             path="/login"
             element={
@@ -73,7 +69,6 @@ export default function App() {
             }
           />
 
-          {/* ================= USER ================= */}
           <Route
             path="/events"
             element={
@@ -107,7 +102,6 @@ export default function App() {
             }
           />
 
-          {/* ================= ADMIN ================= */}
           <Route
             path="/manage-events"
             element={
@@ -163,7 +157,6 @@ export default function App() {
             }
           />
 
-          {/* ================= SUPER ADMIN ================= */}
           <Route
             path="/superadmin/dashboard"
             element={
@@ -186,7 +179,6 @@ export default function App() {
   }
 />
 
-          {/* ================= FALLBACK ================= */}
           <Route
             path="/unauthorized"
             element={

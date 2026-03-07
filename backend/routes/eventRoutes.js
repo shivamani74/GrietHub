@@ -12,14 +12,10 @@ import {
 
 const router = express.Router();
 
-/* ===============================
-   ADMIN: MY EVENTS
-================================ */
+
 router.get("/my-events", protect, getMyEvents);
 
-/* ===============================
-   ADMIN: CREATE EVENT
-================================ */
+
 router.post(
   "/",
   protect,
@@ -76,9 +72,6 @@ router.post(
   }
 );
 
-/* ===============================
-   PUBLIC: GET ALL EVENTS
-================================ */
 router.get("/", async (req, res) => {
   try {
     const events = await Event.find()
@@ -92,19 +85,12 @@ router.get("/", async (req, res) => {
   }
 });
 
-/* ===============================
-   PUBLIC: GET SINGLE EVENT
-================================ */
+
 router.get("/:id", getEventById);
 
-/* ===============================
-   ADMIN: UPDATE EVENT
-================================ */
+
 router.put("/:id", protect, updateEvent);
 
-/* ===============================
-   ADMIN: VIEW REGISTRATIONS
-================================ */
 router.get("/:id/registrations", protect, async (req, res) => {
   try {
     if (req.user.role !== "admin") {

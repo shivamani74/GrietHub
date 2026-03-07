@@ -9,14 +9,11 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  /* ---------------------------
-     REDIRECT IF ALREADY LOGGED IN
-  --------------------------- */
+  
   useEffect(() => {
   const token = localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem("user"));
 
-  console.log("AUTO LOGIN CHECK:", user);
 
   if (token && user?.role) {
     if (user.role === "superadmin") {
@@ -30,9 +27,7 @@ const Login = () => {
 }, [navigate]);
 
 
-  /* ---------------------------
-     HANDLE LOGIN
-  --------------------------- */
+  
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -49,7 +44,6 @@ const Login = () => {
         password,
       });
 
-      // ✅ STORE AUTH DATA
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
 
@@ -78,7 +72,6 @@ const Login = () => {
     <div className="min-h-screen bg-black flex items-center justify-center px-6">
       <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-44 items-center">
 
-        {/* LEFT */}
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left px-4 animate-left">
           <img
             src={require("../assets/griet-glow.png")}
@@ -98,7 +91,6 @@ const Login = () => {
           </p>
         </div>
 
-        {/* RIGHT */}
         <div className="flex justify-center animate-right">
           <div
             className="w-full max-w-md bg-zinc-950 border border-zinc-800 rounded-2xl p-8"

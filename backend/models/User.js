@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 
 const userSchema = new mongoose.Schema(
   {
-    /* ================= BASIC INFO ================= */
+   
     name: {
       type: String,
       required: true,
@@ -37,7 +37,7 @@ const userSchema = new mongoose.Schema(
       minlength: 6,
     },
 
-    /* ================= ROLE SYSTEM ================= */
+  
     role: {
       type: String,
       enum: ["student", "admin", "superadmin"],
@@ -49,10 +49,9 @@ const userSchema = new mongoose.Schema(
       default: false,
     },
 
-    /* ================= ADMIN VERIFICATION ================= */
     adminVerification: {
       proofDocument: {
-        type: String, // file path / secure URL
+        type: String,
       },
 
       clubName: {
@@ -76,11 +75,11 @@ const userSchema = new mongoose.Schema(
 
       verifiedBy: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User", // superadmin
+        ref: "User", 
       },
     },
 
-    /* ================= AUDIT SUPPORT ================= */
+   
     lastLoginAt: {
       type: Date,
     },
@@ -88,7 +87,7 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-/* ================= PASSWORD HASH ================= */
+
 userSchema.pre("save", async function () {
   if (!this.isModified("password")) return;
 
@@ -96,7 +95,7 @@ userSchema.pre("save", async function () {
   this.password = await bcrypt.hash(this.password, salt);
 });
 
-/* ================= PASSWORD MATCH ================= */
+
 userSchema.methods.matchPassword = async function (enteredPassword) {
   return bcrypt.compare(enteredPassword, this.password);
 };

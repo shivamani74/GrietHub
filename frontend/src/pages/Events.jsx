@@ -12,7 +12,7 @@ const Events = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await fetch("http://localhost:5002/api/events");
+        const res = await fetch("https://griet-hub-backend.onrender.com/api/events");
         const data = await res.json();
         setEvents(data);
       } catch (err) {
@@ -25,9 +25,7 @@ const Events = () => {
     fetchEvents();
   }, []);
 
-  /* ===============================
-     SEARCH FILTER
-  ================================ */
+
   const filteredEvents = useMemo(() => {
     if (!search) return events;
 
@@ -54,7 +52,6 @@ const Events = () => {
         Upcoming Events
       </h2>
 
-      {/* 🔍 SEARCH BAR */}
       <div className="max-w-xl mx-auto mb-14">
         <input
           type="text"
@@ -80,7 +77,6 @@ const Events = () => {
                   "0 0 45px rgba(122,28,172,0.3), 0 0 90px rgba(46,7,63,0.45)",
               }}
             >
-              {/* ================= IMAGE ================= */}
               <div className="flex justify-center mb-10">
                 <div className="relative w-[520px] h-[300px] overflow-hidden rounded-3xl">
                   <div className="event-carousel">
@@ -99,7 +95,6 @@ const Events = () => {
                 </div>
               </div>
 
-              {/* ================= CONTENT ================= */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
                 <div className="md:col-span-2">
                   <h3 className="text-3xl font-bold text-white mb-4">
@@ -132,7 +127,6 @@ const Events = () => {
                   </div>
                 </div>
 
-                {/* ================= ACTION ================= */}
                 <div className="flex md:justify-end">
                   <button
                     onClick={() => navigate(`/events/${event._id}`)}

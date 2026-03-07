@@ -8,9 +8,7 @@ import sendEmail from "../utils/sendEmail.js";
 
 const router = express.Router();
 
-/* =====================================================
-   SUPERADMIN DASHBOARD
-===================================================== */
+
 router.get(
   "/dashboard",
   protect,
@@ -66,9 +64,7 @@ router.get(
   }
 );
 
-/* =====================================================
-   PENDING ADMIN REQUESTS
-===================================================== */
+
 router.get(
   "/pending-admins",
   protect,
@@ -91,9 +87,6 @@ router.get(
   }
 );
 
-/* =====================================================
-   APPROVE ADMIN
-===================================================== */
 router.post(
   "/approve-admin/:id",
   protect,
@@ -113,7 +106,6 @@ router.post(
 
       await admin.save();
 
-      // 📧 APPROVAL EMAIL
       await sendEmail({
         to: admin.email,
         subject: "🎉 Admin Account Approved - GRIEThub",
@@ -135,9 +127,7 @@ router.post(
   }
 );
 
-/* =====================================================
-   REJECT ADMIN (ALLOW REAPPLY)
-===================================================== */
+
 router.post(
   "/reject-admin/:id",
   protect,
@@ -159,7 +149,6 @@ router.post(
 
       await admin.save();
 
-      // 📧 REJECTION EMAIL
       await sendEmail({
         to: admin.email,
         subject: "❌ Admin Request Rejected - GRIEThub",
@@ -182,9 +171,7 @@ router.post(
   }
 );
 
-/* =====================================================
-   CSV DOWNLOAD FOR EVENT
-===================================================== */
+
 router.get(
   "/events/:eventId/registrations",
   protect,
@@ -206,9 +193,6 @@ router.get(
   }
 );
 
-/* =====================================================
-   GET VERIFIED ADMINS
-===================================================== */
 router.get(
   "/admins",
   protect,
@@ -231,9 +215,6 @@ router.get(
   }
 );
 
-/* =====================================================
-   REVOKE ADMIN ROLE
-===================================================== */
 router.post(
   "/revoke-admin/:id",
   protect,

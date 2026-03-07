@@ -7,7 +7,6 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       
-      {/* TOP BAR */}
       <header className="flex items-center justify-between px-8 py-4 border-b border-zinc-800">
         <div className="flex items-center gap-3">
           <img src={grietLogo} alt="GRIEThub" className="w-10" />
@@ -37,7 +36,6 @@ const Home = () => {
         </div>
       </header>
 
-      {/* HERO SECTION */}
       <section className="max-w-5xl mx-auto px-6 py-20 text-center">
         <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
           Welcome to{" "}
@@ -53,7 +51,6 @@ const Home = () => {
           Built for students, by students — fast, secure, and modern.
         </p>
       </section>
-{/* STATS SECTION */}
 <section className="max-w-6xl mx-auto px-6 py-16">
   <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
 
@@ -101,7 +98,6 @@ const Home = () => {
 </section>
 
 
-      {/* ABOUT COLLEGE */}
       <section className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12">
         <div>
           <h2 className="text-2xl font-bold mb-4 text-[#7A1CAC]">
@@ -130,7 +126,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* FOOTER */}
       <footer className="border-t border-zinc-800 text-center py-6 text-sm text-zinc-500">
         © {new Date().getFullYear()} GRIEThub · GRIET
       </footer>

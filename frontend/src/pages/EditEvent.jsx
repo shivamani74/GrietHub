@@ -51,9 +51,7 @@ const EditEvent = () => {
     });
   };
 
-  /* ===============================
-     UPDATE EVENT
-  ================================ */
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSaving(true);
@@ -72,9 +70,7 @@ const EditEvent = () => {
     }
   };
 
-  /* ===============================
-     DELETE EVENT
-  ================================ */
+  
   const handleDelete = async () => {
     if (
       !window.confirm(

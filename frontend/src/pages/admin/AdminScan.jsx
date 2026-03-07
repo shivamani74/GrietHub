@@ -11,11 +11,9 @@ const AdminScan = () => {
   const [scanning, setScanning] = useState(false);
   const [processing, setProcessing] = useState(false);
   const [result, setResult] = useState(null);
-  const [screen, setScreen] = useState(null); // success | error | null
+  const [screen, setScreen] = useState(null);
 
-  /* ===============================
-     FETCH ADMIN EVENTS
-  ================================ */
+  
   useEffect(() => {
     axios
       .get("/events/my-events")
@@ -23,9 +21,7 @@ const AdminScan = () => {
       .catch(() => toast.error("Failed to load events"));
   }, []);
 
-  /* ===============================
-     START SCAN
-  ================================ */
+ 
   const startScan = async () => {
     if (!selectedEvent) {
       toast.error("Select an event first");
@@ -63,7 +59,6 @@ const AdminScan = () => {
             );
           }
 
-          // ⏱ 2s delay
           setTimeout(() => {
             setScreen(null);
             setProcessing(false);
@@ -77,9 +72,8 @@ const AdminScan = () => {
     }
   };
 
-  /* ===============================
-     STOP SCAN
-  ================================ */
+  
+   
   const stopScan = async () => {
     if (qrRef.current) {
       await qrRef.current.stop();
@@ -92,7 +86,6 @@ const AdminScan = () => {
   return (
     <div className="min-h-screen bg-black p-6 relative overflow-hidden">
 
-      {/* EDGE GLOW ONLY */}
       {screen && (
         <>
           <div
@@ -114,7 +107,6 @@ const AdminScan = () => {
 
       <h1 className="text-xl text-white mb-4">Admin QR Scanner</h1>
 
-      {/* EVENT SELECT */}
       <select
         value={selectedEvent}
         onChange={(e) => setSelectedEvent(e.target.value)}

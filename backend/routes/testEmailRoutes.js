@@ -6,7 +6,7 @@ const router = express.Router();
 router.get("/test-email", async (req, res) => {
   try {
     await sendEmail({
-      to: "shivvvm036@gmail.com", // put your email
+      to: "shivvvm036@gmail.com", 
       subject: "Test Email",
       text: "If you received this, Nodemailer is working 🎉",
     });

@@ -11,7 +11,6 @@ const EventDetails = () => {
   const [paying, setPaying] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  /* ================= SAFE USER PARSING ================= */
   let user = null;
   try {
     const userRaw = localStorage.getItem("user");
@@ -24,11 +23,10 @@ const EventDetails = () => {
 
   const token = localStorage.getItem("token");
 
-  /* ================= FETCH EVENT ================= */
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const res = await fetch(`http://localhost:5002/api/events/${id}`);
+        const res = await fetch(`https://griet-hub-backend.onrender.com/api/events/${id}`);
         const data = await res.json();
 
         if (!res.ok) {
@@ -47,7 +45,6 @@ const EventDetails = () => {
     fetchEvent();
   }, [id]);
 
-  /* ================= AUTO IMAGE SLIDER ================= */
   useEffect(() => {
     if (!event?.images || event.images.length <= 1) return;
 
@@ -55,12 +52,11 @@ const EventDetails = () => {
       setCurrentIndex((prev) =>
         prev === event.images.length - 1 ? 0 : prev + 1
       );
-    }, 3000); // ⏱ 3s smooth slide
+    }, 3000); 
 
     return () => clearInterval(interval);
   }, [event]);
 
-  /* ================= RAZORPAY ================= */
   const loadRazorpay = () =>
     new Promise((resolve) => {
       const script = document.createElement("script");
@@ -159,7 +155,6 @@ const EventDetails = () => {
     }
   };
 
-  /* ================= UI ================= */
   if (loading) {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center">
@@ -185,7 +180,6 @@ const EventDetails = () => {
     <div className="min-h-screen bg-black px-6 py-12">
       <div className="max-w-5xl mx-auto">
 
-        {/* ================= IMAGE SLIDER ================= */}
         <div className="flex justify-center mb-12">
           <div className="relative w-[620px] h-[360px] rounded-3xl overflow-hidden bg-black">
             <div
@@ -206,19 +200,16 @@ const EventDetails = () => {
           </div>
         </div>
 
-        {/* ================= TITLE ================= */}
         <h1 className="text-4xl font-extrabold text-[#7A1CAC] mb-6">
           {event.title}
         </h1>
 
-        {/* ================= META INFO ================= */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-zinc-300 mb-12">
           <p>📍 <b>Venue:</b> {event.venue}</p>
           <p>🕒 <b>Date:</b> {new Date(event.date).toLocaleString()}</p>
           <p>💰 <b>Price:</b> ₹{event.price}</p>
         </div>
 
-        {/* ================= DESCRIPTION ================= */}
         <div className="bg-zinc-950 border border-zinc-800 rounded-2xl p-8 mb-12">
           <h2 className="text-2xl font-bold text-zinc-100 mb-4">
             📖 Event Description
@@ -228,7 +219,6 @@ const EventDetails = () => {
           </p>
         </div>
 
-        {/* ================= REGISTER & PAY ================= */}
         <div className="flex justify-center">
           <button
             onClick={handleRegisterAndPay}

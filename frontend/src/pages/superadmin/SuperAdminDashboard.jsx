@@ -14,9 +14,7 @@ const SuperAdminDashboard = () => {
   const [eventSearch, setEventSearch] = useState("");
   const [adminSearch, setAdminSearch] = useState("");
 
-  /* ===============================
-     FETCH DASHBOARD
-  ================================ */
+  
   const fetchDashboard = async () => {
     try {
       const { data } = await axios.get("/superadmin/dashboard");
@@ -26,9 +24,7 @@ const SuperAdminDashboard = () => {
     }
   };
 
-  /* ===============================
-     FETCH ADMINS
-  ================================ */
+ 
   const fetchAdmins = async () => {
     try {
       const { data } = await axios.get("/superadmin/admins");
@@ -44,17 +40,13 @@ const SuperAdminDashboard = () => {
     );
   }, []);
 
-  /* ===============================
-     LOGOUT
-  ================================ */
+
   const handleLogout = () => {
     localStorage.clear();
     navigate("/login");
   };
 
-  /* ===============================
-     REVOKE ADMIN
-  ================================ */
+  
   const revokeAdmin = async (id) => {
     const confirm = window.confirm(
       "Are you sure? This admin will lose all privileges."
@@ -74,9 +66,7 @@ const SuperAdminDashboard = () => {
     }
   };
 
-  /* ===============================
-     CSV DOWNLOAD
-  ================================ */
+  
   const downloadCSV = async (eventId, title) => {
     try {
       const { data } = await axios.get(
@@ -123,9 +113,7 @@ const SuperAdminDashboard = () => {
     }
   };
 
-  /* ===============================
-     FILTERS
-  ================================ */
+ 
   const filteredEvents = useMemo(() => {
     if (!dashboard) return [];
     return dashboard.events.filter((e) =>
@@ -153,7 +141,6 @@ const SuperAdminDashboard = () => {
     <div className="min-h-screen bg-black px-6 py-10">
       <div className="max-w-7xl mx-auto">
 
-        {/* HEADER */}
         <div className="flex items-center justify-between mb-10">
           <h1 className="text-3xl font-extrabold text-[#7A1CAC]">
             🛡️ SuperAdmin Dashboard
@@ -167,7 +154,6 @@ const SuperAdminDashboard = () => {
           </button>
         </div>
 
-        {/* ADMIN REQUESTS */}
         <div
           onClick={() => navigate("/superadmin/verify-admins")}
           className="cursor-pointer bg-zinc-950 border border-zinc-800
@@ -185,7 +171,6 @@ const SuperAdminDashboard = () => {
           </p>
         </div>
 
-        {/* EVENTS */}
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-2xl font-bold text-[#7A1CAC]">
             📅 Events

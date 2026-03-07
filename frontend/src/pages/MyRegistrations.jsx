@@ -20,7 +20,7 @@ const MyRegistrations = () => {
     const fetchMyRegistrations = async () => {
       try {
         const res = await fetch(
-          "https://griet-hub-backend.onrender.com/api/registrations/my",
+          "https://griethub.onrender.com/api/registrations/my",
           {
             headers: {
               Authorization: `Bearer ${token}`,

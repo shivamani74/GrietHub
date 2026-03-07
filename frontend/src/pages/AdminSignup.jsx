@@ -54,7 +54,7 @@ const AdminSignup = () => {
     setLoading(true);
     try {
       const res = await fetch(
-        "https://griet-hub-backend.onrender.com/api/auth/admin/signup",
+        "https://griethub.onrender.com/api/auth/admin/signup",
         {
           method: "POST",
           body: formData,

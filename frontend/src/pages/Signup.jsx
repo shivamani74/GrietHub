@@ -141,7 +141,7 @@ const Signup = () => {
             {step === 1 && (
               <div className="mb-6 rounded-lg border border-yellow-500/30 bg-yellow-500/10 px-4 py-3">
                 <p className="text-yellow-400 text-xs leading-relaxed text-center">
-                  ⚠️ Please use your{"kjbhb "}
+                  ⚠️ Please use your
                   <span className="font-semibold">
                     official college email ID
                   </span>{" "}

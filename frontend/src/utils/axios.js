@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://griethub.onrender.com/api" || "/api",
+  baseURL: "https://griethub.onrender.com",
 });
 
 instance.interceptors.request.use((config) => {
